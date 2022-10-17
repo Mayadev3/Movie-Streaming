@@ -12,9 +12,10 @@ body {
   margin: 0;
   background-color: var(--primary-color);
 }
-form {
-  text-align: right;
-  margin: 30px;
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px 40px;
 }
 form input {
   background-color: var(--secondary-color);
@@ -26,8 +27,69 @@ form input {
 input::placeholder {
   color: white;
 }
-placeholder:focus {
+input:focus {
   outline: none;
-  border: none;
-  color: transparent;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.movie {
+  width: 250px;
+  height: 300px;
+  background-color: var(--secondary-color);
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.movie img {
+  width: 100%;
+}
+.movie-info {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0 13px;
+  letter-spacing: 0.5px;
+}
+.movie-info h3 {
+  margin: 0;
+}
+.movie-info span {
+  background-color: var(--primary-color);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 11px;
+  font-weight: bold;
+}
+.movie-info span.green {
+  color: lightgreen;
+}
+.movie-info span.red {
+  color: red;
+}
+.movie-info span.orange {
+  color: orange;
+}
+.overview {
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  max-height: 100%;
+  transform: translateY(
+    101%
+  ); /*it disappears within the container movie, that is why it doesnt move out*/
+  transition: transform 0.3s ease-in-out;
+}
+.movie:hover .overview {
+  transform: translateY(0%);
 }
