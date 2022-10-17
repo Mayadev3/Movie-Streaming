@@ -3,11 +3,31 @@
   box-sizing: border-box; /*so padding and border doesnt effect the width and height of the element*/
 }
 
+:root {
+  --primary-color: #22254b;
+  --secondary-color: #373b69;
+}
 body {
   font-family: "Poppins", sand-serif;
   margin: 0;
+  background-color: var(--primary-color);
 }
-:root {
-  --primary-color: ;
-  --secondary-color: ;
+form {
+  text-align: right;
+  margin: 30px;
+}
+form input {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  border: none;
+  padding: 10px 13px;
+  color: white;
+}
+input::placeholder {
+  color: white;
+}
+placeholder:focus {
+  outline: none;
+  border: none;
+  color: transparent;
 }
