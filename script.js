@@ -15,5 +15,5 @@ async function getMovies(url) {
 getMovies(apiUrl);
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const movie = search.value;
+  const searchTerm = search.value;
 });
