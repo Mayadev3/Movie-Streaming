@@ -18,11 +18,10 @@ form.addEventListener("submit", (e) => {
   const searchTerm = search.value;
 });*/
 
-async function fetchMovie(searchTerm) {
+async function fetchMovie(movieName) {
   let apiKey = `64b65930978cceae7b4c679e1f043d6f`;
-
   const get = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchTerm}`
+    `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`
   );
   const res = get.json();
   console.log(res);
@@ -31,5 +30,5 @@ async function fetchMovie(searchTerm) {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let searchTerm = search.value;
-  fetchMovie();
+  fetchMovie(searchTerm);
 });
