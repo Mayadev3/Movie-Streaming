@@ -34,7 +34,8 @@ input:focus {
 main {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 50px;
+  justify-content: center;
+  margin-top: 40px;
 }
 .movie {
   width: 250px;
@@ -46,7 +47,7 @@ main {
 }
 .movie img {
   width: 100%;
-  height: 270px;
+  height: 320px;
 }
 .movie-info {
   display: flex;
@@ -55,11 +56,12 @@ main {
   justify-content: space-between;
   align-items: center;
   color: white;
-  padding: 0 13px;
+  padding: 10px 13px;
   letter-spacing: 0.5px;
 }
 .movie-info h3 {
   margin: 0;
+  font-size: 15px;
 }
 .movie-info span {
   background-color: var(--primary-color);
@@ -85,6 +87,7 @@ main {
   right: 0;
   padding: 10px;
   max-height: 100%;
+  font-size: 13px;
   transform: translateY(
     101%
   ); /*it disappears within the container movie, that is why it doesnt move out*/

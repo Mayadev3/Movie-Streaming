@@ -1,10 +1,19 @@
+const apiUrl = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1`;
+const IMG_PATH = `https://image.tmdb.org/t/p/w1280`;
+const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="`;
+
 const main = document.getElementById("main");
 const form = document.getElementById("form");
-const search = document.querySelector(".search");
+const search = document.getElementById("search");
 
-const apiUrl = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=64b65930978cceae7b4c679e1f043d6f&page=1`;
-const imagePath = `https://image.tmdb.org/t/p/w1280`;
-const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=64b65930978cceae7b4c679e1f043d6f&query="`;
+//First call of popular movies so they are always visible on the page when user starts
+getMovies(apiUrl);
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const searchTerm = search.value;
+  getMovies(SEARCH_API + searchTerm);
+});
 
 async function getMovies(url) {
   const get = await fetch(url);
@@ -12,30 +21,18 @@ async function getMovies(url) {
   showMovies(response.results);
 }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const searchTerm = search.value;
-  if (searchTerm && searchTerm !== "") {
-    getMovies(searchUrl + searchTerm);
-    search.value = "";
-    /* after getting the search results, clear the input, dont leave the movie searched written in the input*/
-  } else {
-    window.location.reload();
-  }
-  /*this says that if there is a term written in the input and it isn't emptry, do the following*/
-});
-
 function showMovies(movies) {
+  main.innerHTML =
+    ""; /*we need to put the empty main otherwise with each search the movie cards will accumilate on one
+  page*/
+
   movies.forEach((movie) => {
     const { title, poster_path, vote_average, overview } = movie;
 
-    let movieEl = document.createElement("div");
+    const movieEl = document.createElement("div");
     movieEl.classList.add("movie");
 
-    movieHTML = `<img
-          src="${imagePath + poster_path}"
-          alt="${title}"
-        />
+    movieHTML = ` <img src="${IMG_PATH + poster_path}" alt="${title}">
         <div class="movie-info">
           <h3>${title}</h3>
           <span class=${getClassByRate(vote_average)}>${vote_average}</span>
@@ -50,11 +47,11 @@ function showMovies(movies) {
   });
 }
 function getClassByRate(vote) {
-  if (vote >= 1 && vote <= 5) {
-    return "red";
-  } else if (vote >= 6 && vote <= 8) {
+  if (vote >= 8) {
+    return "green";
+  } else if (vote >= 5) {
     return "orange";
   } else {
-    return "green";
+    return "red";
   }
 }
