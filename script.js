@@ -9,7 +9,7 @@ const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=64b65930978
 async function getMovies(url) {
   const get = await fetch(url);
   const response = await get.json();
-  console.log(response.results);
+  showMovies(response.results);
 }
 
 form.addEventListener("submit", (e) => {
@@ -24,3 +24,37 @@ form.addEventListener("submit", (e) => {
   }
   /*this says that if there is a term written in the input and it isn't emptry, do the following*/
 });
+
+function showMovies(movies) {
+  movies.forEach((movie) => {
+    const { title, poster_path, vote_average, overview } = movie;
+
+    let movieEl = document.createElement("div");
+    movieEl.classList.add("movie");
+
+    movieHTML = `<img
+          src="${imagePath + poster_path}"
+          alt="${title}"
+        />
+        <div class="movie-info">
+          <h3>${title}</h3>
+          <span class=${getClassByRate(vote_average)}>${vote_average}</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          ${overview}
+        </div>`;
+
+    movieEl.innerHTML = movieHTML;
+    main.appendChild(movieEl);
+  });
+}
+function getClassByRate(vote) {
+  if (vote >= 1 && vote <= 5) {
+    return "red";
+  } else if (vote >= 6 && vote <= 8) {
+    return "orange";
+  } else {
+    return "green";
+  }
+}
