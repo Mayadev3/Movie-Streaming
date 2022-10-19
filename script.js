@@ -22,8 +22,8 @@ async function getMovies(url) {
 }
 
 function showMovies(movies) {
-  main.innerHTML =
-    ""; /*we need to put the empty main otherwise with each search the movie cards will accumilate on one
+  main.innerHTML = "";
+  /*we need to put the empty main otherwise with each search the movie cards will accumilate on one
   page*/
 
   movies.forEach((movie) => {
