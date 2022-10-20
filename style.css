@@ -3,14 +3,15 @@
   box-sizing: border-box; /*so padding and border doesnt effect the width and height of the element*/
 }
 
-:root {
-  --primary-color: #22254b;
-  --secondary-color: #373b69;
-}
 body {
   font-family: "Poppins", sand-serif;
   margin: 0;
-  background-color: var(--primary-color);
+  background: rgb(227, 14, 55);
+  background: linear-gradient(
+    101deg,
+    rgba(227, 14, 55, 1) 7%,
+    rgba(252, 5, 201, 1) 41%
+  );
 }
 header {
   display: flex;
@@ -18,14 +19,14 @@ header {
   padding: 30px 40px;
 }
 form input {
-  background-color: var(--secondary-color);
+  background-color: white;
   border-radius: 20px;
   border: none;
   padding: 10px 15px;
-  color: rgba(255, 255, 255, 0.783);
+  color: grey;
 }
 input::placeholder {
-  color: rgba(255, 255, 255, 0.598);
+  color: grey;
 }
 input:focus {
   outline: none;
@@ -35,11 +36,10 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 40px;
 }
 .movie {
   width: 250px;
-  background-color: var(--secondary-color);
+  background-color: #7edce2;
   margin: 10px;
   position: relative;
   overflow: hidden;
@@ -64,9 +64,9 @@ main {
   font-size: 15px;
 }
 .movie-info span {
-  background-color: var(--primary-color);
+  background-color: #9061f9;
   border-radius: 3px;
-  padding: 1px 4px;
+  padding: 3px 6px;
   font-size: 11px;
   font-weight: bold;
 }

@@ -19,6 +19,7 @@ async function getMovies(url) {
   const get = await fetch(url);
   const response = await get.json();
   showMovies(response.results);
+  console.log(response.results);
 }
 
 function showMovies(movies) {
