@@ -8,7 +8,7 @@ Coding Achievements:
 - Used async/await/fetch to get data from the Movie Database API
 - Created HTML elements in javascript
 - Looped through the movie attributes and injected them into the DOM
-- Used the if/else statement to assign each rating range a certain color
+- Used classes and the if/else statement to assign each rating range a certain color
 
 
 
